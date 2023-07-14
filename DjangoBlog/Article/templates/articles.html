@@ -1,13 +1,20 @@
-<!DOCTYPE html>
-<html>
-    <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Article List</title>
-    </head>
-    <body>
-        <h1>Fake Fiction Articles</h1>
+{% extends 'base.html' %}
+{% block title %}Article List{% endblock %}
+
+{% block style %}
+    <style>
+        .h1-style {
+            color:red;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    {% comment %} <div class="container"> {% endcomment %}
+        <h1 class='h1-style'>Fake Fiction Articles</h1>
         <h2>All articles of fake fiction listed here</h2>
+
         {{articles}}
-    </body>
-</html>
+        <input type="submit" value="click" class='btn btn-primary'>
+    {% comment %} </div> {% endcomment %}
+{% endblock %}
