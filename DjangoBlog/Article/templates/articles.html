@@ -3,18 +3,22 @@
 
 {% block style %}
     <style>
-        .h1-style {
-            color:red;
+        .link-style {
+            text-decoration:none;
+            color:black;
+        }
+        .link-style:hover {
+            text-decoration:none;
+            color:gray;
         }
     </style>
 {% endblock %}
 
 {% block body %}
-    {% comment %} <div class="container"> {% endcomment %}
-        <h1 class='h1-style'>Fake Fiction Articles</h1>
-        <h2>All articles of fake fiction listed here</h2>
-
-        {{articles}}
-        <input type="submit" value="click" class='btn btn-primary'>
-    {% comment %} </div> {% endcomment %}
+    <div class="container mt-4">
+        {% for article in articles_list %}
+            <span class="badge rounded-pill bg-success">Author: {{article.author}}</span>
+            <h1><a class='link-style' href="">{{article.title}}</a></h1>
+        {% endfor %}
+    </div>
 {% endblock %}
