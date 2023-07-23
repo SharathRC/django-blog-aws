@@ -8,4 +8,10 @@
         <h6>Published on {{ article.published }} by <i>{{ article.author }}</i></h6>
         <br>
         <p>{{ article.desc}}</p>
+
+        {% if request.user == article.author %}
+            <a class="btn btn-danger mx-3 mt-4" href="{% url 'deleted_article' article.slug %}">Delete</a>
+            <a class="btn btn-success mx-3 mt-4" href="{% url 'update_article_form' article.slug %}">Update</a>
+
+        {% endif %}
 {% endblock %}

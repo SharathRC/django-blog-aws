@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse, get_object_or_404, redirect
 from .models import Article
-from .forms import UserRegistrationForm, ArticleAddingForm
+from .forms import UserRegistrationForm, ArticleAddingForm, UpdateArticle
 
 
 def opening_page(request):
@@ -44,3 +44,26 @@ def article_form(request):
         article_form = ArticleAddingForm()
         
     return render(request, 'account/add_article.html', {'article_form': article_form})
+
+def update_article(request, slug):
+    article = get_object_or_404(Article, slug=slug)
+    update_article_form = UpdateArticle(request.POST or None, instance=article)
+    
+    if update_article_form.is_valid():
+        update_article_form.save()
+        
+        return redirect('article_list')
+    else:
+        update_article_form = UpdateArticle()
+        
+    return render(request, 'account/update_article.html', {'update_article_form': update_article_form, 'article': article})
+
+def delete_article(request, slug):
+    article = get_object_or_404(Article, slug=slug)
+    
+    if article:
+        article.delete()
+        return render(request, 'account/delete_article.html', {'article': article})
+    
+    return render()
+        

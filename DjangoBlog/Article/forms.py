@@ -19,7 +19,11 @@ class UserRegistrationForm(forms.ModelForm):
 
 
 class ArticleAddingForm(forms.ModelForm):
-    
+    class Meta:
+        model = Article
+        fields = ('title', 'desc')
+
+class UpdateArticle(forms.ModelForm):
     class Meta:
         model = Article
         fields = ('title', 'desc')
