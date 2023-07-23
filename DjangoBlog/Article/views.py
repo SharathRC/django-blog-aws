@@ -5,9 +5,6 @@ from .models import Article
 from .forms import UserRegistrationForm, ArticleAddingForm, UpdateArticle
 
 
-def opening_page(request):
-    return render(request, 'opening_page.html')
-
 @login_required
 def articles_list(request):
     articles_list = Article.objects.all().order_by('-published')

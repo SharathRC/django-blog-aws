@@ -1,6 +1,5 @@
 from django.urls import path
 from .views import (
-    opening_page, 
     articles_list, 
     articles_details, 
     register,
